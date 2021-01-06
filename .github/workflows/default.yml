@@ -1,0 +1,30 @@
+name: Default
+
+on: ['push', 'pull_request']
+
+jobs:
+  test-server:
+    services:
+      mysql:
+        image: 5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Test Server
+        run: |
+          sudo add-apt-repository ppa:mc3man/trusty-media --yes
+          sudo apt-get update
+          sudo apt-get install ffmpeg gstreamer0.10-ffmpeg
+          yarn install --frozen-lockfile
+          yarn test
+        env:
+          CI: true
