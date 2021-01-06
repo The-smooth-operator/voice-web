@@ -21,9 +21,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Test Server
         run: |
-          sudo add-apt-repository ppa:mc3man/trusty-media --yes
-          sudo apt-get update
-          sudo apt-get install ffmpeg gstreamer0.10-ffmpeg
           yarn install --frozen-lockfile
           yarn test
         env:
