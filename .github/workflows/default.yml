@@ -13,7 +13,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: ''
           MYSQL_USER: voicecommons
-          MYSQL_PASSWORD: voicecommons
+          MYSQL_PASSWORD: ''
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     runs-on: ubuntu-latest
     strategy:
