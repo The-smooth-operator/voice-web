@@ -14,7 +14,6 @@ jobs:
           MYSQL_ROOT_PASSWORD: ''
           MYSQL_USER: voicecommons
           MYSQL_PASSWORD: voicecommons
-          MYSQL_DATABASE: voiceweb
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     runs-on: ubuntu-latest
     strategy:
