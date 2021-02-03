@@ -80,7 +80,7 @@ jobs:
         with:
           push: true
           file: ./docker/Dockerfile
-          tags:
+          tags: ${{ steps.tags.outputs.tags }}
           build-args: |
             COMMIT=${{ github.sha }}
             TAG=${{ steps.tags.outputs.tags }}
